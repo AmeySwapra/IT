@@ -123,7 +123,7 @@ import {
               </MenuList>
             </Menu>
   
-            <NavItem to="/our-placement" icon={FaUserGraduate} label="Our Placement" />
+            <NavItem to="/placement" icon={FaUserGraduate} label="Our Placement" />
             <NavItem to="/gallery" icon={FaImages} label="Gallery" />
             <NavItem to="/career" icon={FaBriefcase} label="Career" />
             <NavItem to="/contact" icon={FaEnvelope} label="Contact Us" />
@@ -185,7 +185,7 @@ import {
                     ))}
                   </Stack>
                 </Collapse>
-                <NavItem to="/our-placement" icon={FaUserGraduate} label="Our Placement" onClick={onClose} />
+                <NavItem to="/placement" icon={FaUserGraduate} label="Our Placement" onClick={onClose} />
                 <NavItem to="/gallery" icon={FaImages} label="Gallery" onClick={onClose} />
                 <NavItem to="/career" icon={FaBriefcase} label="Career" onClick={onClose} />
                 <NavItem to="/contact" icon={FaEnvelope} label="Contact Us" onClick={onClose} />
