@@ -100,7 +100,7 @@ import {
             justify="flex-end"
           >
             <NavItem to="/" icon={FaHome} label="Home" />
-            <NavItem to="/about-us" icon={FaInfoCircle} label="About Us" />
+            <NavItem to="/about" icon={FaInfoCircle} label="About Us" />
             
             <Menu>
               <MenuButton as={Button} bg="transparent" color={theme.colors.text} _hover={{ color: theme.colors.hover }}>
@@ -155,7 +155,7 @@ import {
             <DrawerBody>
               <Stack spacing={6}>
                 <NavItem to="/" icon={FaHome} label="Home" onClick={onClose} />
-                <NavItem to="/about-us" icon={FaInfoCircle} label="About Us" onClick={onClose} />
+                <NavItem to="/about" icon={FaInfoCircle} label="About Us" onClick={onClose} />
                 <Button
                   bg="transparent"
                   color={theme.colors.text}

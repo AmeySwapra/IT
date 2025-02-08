@@ -51,7 +51,11 @@ const Contact = () => {
             p={6}
             borderRadius="lg"
             border={`1px solid ${theme.colors.text}`}
-            boxShadow={`-10px -10px ${theme.colors.text}`}
+            _hover={{
+              boxShadow: `-10px -10px ${theme.colors.text}`,
+              transform: "translateY(-5px) scale(1.05)",  
+              transition: "all 0.5s ease-out", 
+            }}
           >
             <CardBody>
               <VStack spacing={4} as="form">

@@ -4,6 +4,7 @@ import Header from '../componenets/common/Header'
 import HeroSection from '../componenets/HeroSection'
 import About from '../componenets/About'
 import Footer from '../componenets/common/Footer'
+import EnquiryForm from '../componenets/common/EnquiryForm'
 
 function HomePage() {
   return (
@@ -12,6 +13,7 @@ function HomePage() {
      <Header/>
      <HeroSection/>
      <About/>
+     <EnquiryForm/>
      <Footer/>
    </>
   )

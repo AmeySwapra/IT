@@ -94,7 +94,7 @@ const HeroSection = () => {
               </Text>{" "}
               Registered Students.
             </Text>
-            <Button bg={theme.colors.text} size="lg" color="white">
+            <Button bg={theme.colors.text} size="lg" _hover={{ bg: "hover" }} color="white">
               Explore All Courses
             </Button>
           </VStack>
@@ -171,7 +171,11 @@ const HeroSection = () => {
               p={5}
               border={`1px solid ${theme.colors.text}`}
               borderRadius="lg"
-              boxShadow={`-10px -10px ${theme.colors.text}`}
+              _hover={{
+                boxShadow: `-10px -10px ${theme.colors.text}`,
+                transform: "translateY(-5px) scale(1.05)",  
+                transition: "all 0.5s ease-out", 
+              }}
               align="center"
               w={{ base: "100%", md: "48%", lg: "30%" }}
               flexDirection="row"

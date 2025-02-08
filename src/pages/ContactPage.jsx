@@ -3,6 +3,7 @@ import Topbar from '../componenets/common/Topbar'
 import Header from '../componenets/common/Header'
 import Contact from '../componenets/Contact'
 import Footer from '../componenets/common/Footer'
+import EnquiryForm from '../componenets/common/EnquiryForm'
 
 function ContactPage() {
   return (
@@ -10,6 +11,7 @@ function ContactPage() {
       <Topbar/>
       <Header/>
       <Contact/>
+      <EnquiryForm/>
       <Footer/>
     </>
   )

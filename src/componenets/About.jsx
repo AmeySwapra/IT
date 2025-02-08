@@ -51,7 +51,7 @@ const About = () => {
             <Text fontSize="md" mt={3} fontWeight="bold" color="secondary">
               Join Code Academy Today and Secure Your Future in IT!
             </Text>
-            <Button mt={5} bg={"text"} size="lg" color="white">
+            <Button mt={5} bg={"text"} size="lg" _hover={{ bg: "hover" }} color="white">
               Explore All Courses
             </Button>
           </Box>
