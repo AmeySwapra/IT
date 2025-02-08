@@ -40,7 +40,7 @@ const Contact = () => {
     <Box bg={"bg"}>
       <Container maxW="container.xl" px={{ base: 4, md: 8, lg: 20 }} py={10}>
         <Heading as="h2" textAlign="left" mb={1}>
-          Course Enrollment or Inquiry
+          Course Enrollment or <Text as={'span'} color={'text'}>Inquiry</Text>
         </Heading>
         <Text textAlign="left" mb={6}>
           Your details will not be shared. Compulsory fields are marked.
@@ -52,7 +52,7 @@ const Contact = () => {
             borderRadius="lg"
             border={`1px solid ${theme.colors.text}`}
             _hover={{
-              boxShadow: `-10px -10px ${theme.colors.text}`,
+              boxShadow: `10px 10px ${theme.colors.text}`,
               transform: "translateY(-5px) scale(1.05)",  
               transition: "all 0.5s ease-out", 
             }}

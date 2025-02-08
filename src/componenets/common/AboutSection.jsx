@@ -12,8 +12,8 @@ const AboutSection = () => {
       >
         {/* Left Side - Text Content */}
         <Box flex={1} textAlign={{ base: "center", md: "left" }} px={5}>
-          <Heading fontSize="4xl" color="text" mb={4} fontFamily="heading">
-            About Code Academy
+          <Heading fontSize="5xl" color="black" mb={4} fontFamily="heading">
+            About <Text as={'span'} color={'text'}>Code Academy</Text>
           </Heading>
           <Text fontSize="lg" color="secondary" fontFamily="body" mb={6}>
             At <b>Code Academy</b>, we are committed to providing top-notch IT

@@ -5,6 +5,7 @@ import HeroSection from '../componenets/HeroSection'
 import About from '../componenets/About'
 import Footer from '../componenets/common/Footer'
 import EnquiryForm from '../componenets/common/EnquiryForm'
+import HiringPartners from '../componenets/common/HiringPartners'
 
 function HomePage() {
   return (
@@ -14,6 +15,7 @@ function HomePage() {
      <HeroSection/>
      <About/>
      <EnquiryForm/>
+     <HiringPartners/>
      <Footer/>
    </>
   )

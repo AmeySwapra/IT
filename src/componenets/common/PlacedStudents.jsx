@@ -75,7 +75,7 @@ const PlacedStudents = () => {
   return (
     <Box bg='bg'>
         <Box py={10} px={{ base: 4, md: 8, lg: 24 }} textAlign="center">
-      <Heading mb={6}>Our Placed Students</Heading>
+      <Heading mb={6}>Our <Text as={'span'} color={'text'}>Placed Students</Text></Heading>
       <Flex justifyContent="center" wrap="wrap" gap={2} mb={6}>
         {[2024, 2023, 2022].map((year) => (
           <Button key={year} bg="text" boxShadow={'lg'} color={'bg'} size={'lg'} onClick={() => { setSelectedYear(year); setCurrentPage(0); }}>

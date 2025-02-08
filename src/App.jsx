@@ -4,6 +4,8 @@ import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
 import PlacementPage from './pages/PlacementPage'
 import AboutPage from './pages/AboutPage'
+import CareerPage from './pages/CareerPage'
+import GalleryPage from './pages/GalleryPage'
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path='/contact' element={<ContactPage/>} />
           <Route path='/placement' element={<PlacementPage/>} />
           <Route path='/about' element={<AboutPage/>} />
+          <Route path='/career' element={<CareerPage/>} />
+          <Route path='/gallery' element={<GalleryPage/>} />
         </Routes>
       </BrowserRouter>
     </>

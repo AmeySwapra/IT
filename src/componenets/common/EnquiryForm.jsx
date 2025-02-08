@@ -8,8 +8,12 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
+import { useState } from "react";
+import InquiryModal from "../modal/InquiryModal";
 
 const EnquiryForm = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Box bg="text" py={8} className="sec12bg">
       <Container maxW="container.xl" pt={2}>
@@ -42,7 +46,7 @@ const EnquiryForm = () => {
             color="white"
           >
             <Heading as="h2" fontSize="2xl" fontWeight="bold">
-              <Text as="span">Begin  Coding at Code Academy</Text>
+              <Text as="span">Begin Coding at Code Academy</Text>
               <Text as="span" display="block">
                 The Best Institute for Coding Skills
               </Text>
@@ -61,12 +65,16 @@ const EnquiryForm = () => {
               _hover={{ bg: "text" }}
               size="lg"
               borderRadius="full"
+              onClick={() => setIsOpen(true)}
             >
               Enquire Now
             </Button>
           </Flex>
         </Flex>
       </Container>
+
+      {/* Inquiry Modal */}
+      <InquiryModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </Box>
   );
 };

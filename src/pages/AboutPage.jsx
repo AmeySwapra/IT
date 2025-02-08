@@ -5,6 +5,7 @@ import AboutSection from '../componenets/common/AboutSection'
 import Footer from '../componenets/common/Footer'
 import Counter from '../componenets/common/Counter'
 import EnquiryForm from '../componenets/common/EnquiryForm'
+import HiringPartners from '../componenets/common/HiringPartners'
 
 function AboutPage() {
   return (
@@ -14,6 +15,7 @@ function AboutPage() {
       <AboutSection/>
       <Counter/>
       <EnquiryForm/>
+      <HiringPartners/>
       <Footer/>
     </>
   )
