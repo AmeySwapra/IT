@@ -13,7 +13,7 @@ import {
     Textarea,
   } from "@chakra-ui/react";
   import { useState } from "react";
-  import modalbg from '../../../public/assets/job.avif'
+
   const JobApplicationModal = ({ isOpen, onClose, job }) => {
     const [formData, setFormData] = useState({
       fullName: "",
@@ -43,10 +43,10 @@ import {
       <Modal isOpen={isOpen} onClose={onClose} size="md">
         <ModalOverlay />
         <ModalContent
-          bgImage={`url(${modalbg})`}
-                  bgSize="cover"
-                  bgPosition="center"
-                  color="white"
+         bgImage="url('/assets/job.avif')"
+         bgSize="cover"
+         bgPosition="center"
+         color="white"
         >
           <ModalHeader textAlign={'center'} color={'black'} >Apply for {job?.title}</ModalHeader>
           <ModalCloseButton />
