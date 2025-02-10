@@ -6,6 +6,8 @@ import Footer from '../componenets/common/Footer'
 import Counter from '../componenets/common/Counter'
 import EnquiryForm from '../componenets/common/EnquiryForm'
 import HiringPartners from '../componenets/common/HiringPartners'
+import Testimonial from '../componenets/common/Testimonail'
+import FAQ from '../componenets/common/FAQ'
 
 function AboutPage() {
   return (
@@ -16,6 +18,8 @@ function AboutPage() {
       <Counter/>
       <EnquiryForm/>
       <HiringPartners/>
+      <Testimonial/>
+      <FAQ/>
       <Footer/>
     </>
   )

@@ -53,7 +53,7 @@ const Gallery = () => {
   const displayedImages = showAll ? allImages : allImages.slice(0, 10);
 
   return (
-    <Box bg="bg" py={10} px={{base: 4, md: 8, lg: 24}}>
+    <Box bg="bg" overflowX={'hidden'} py={10} px={{base: 4, md: 8, lg: 24}}>
       <Container maxW="container.xl">
         {/* Introduction Section */}
        

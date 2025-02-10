@@ -31,7 +31,7 @@ const Counter = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
 
   return (
-    <Box bg="bg" py={12} px={{base: 4, md: 8, lg: 16}} textAlign="center" ref={ref}>
+    <Box bg="bg" py={12} px={{base: 4, md: 8, lg: 16}} textAlign="center" overflowX={'hidden'} ref={ref}>
       <Heading fontSize="4xl" color="text" mb={8} fontFamily="heading">
         Our Achievements 🚀
       </Heading>

@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Image, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 
 const hiringPartners = [
   { id: 1, logo: "https://logo.clearbit.com/google.com", name: "Google" },
@@ -35,10 +35,10 @@ const hiringPartners = [
 
 const HiringPartners = () => {
   return (
-    <Box bg="bg" py={10}>
+    <Box bg="bg" overflowX={'hidden'} py={10}>
       <Container maxW="container.xl" textAlign="center">
-        <Heading as="h2" fontSize="5xl" color="text" mb={6}>
-          Our Hiring Partners
+        <Heading as="h2" fontSize="4xl" color="black" mb={6}>
+          Our <Text as='span' color='text'>Hiring Partners</Text>
         </Heading>
 
         <SimpleGrid columns={{ base: 2, sm: 3, md: 4, lg: 5 }} spacing={6}>

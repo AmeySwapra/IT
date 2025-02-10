@@ -15,7 +15,7 @@ const EnquiryForm = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Box bg="text" py={8} className="sec12bg">
+    <Box bg="text" py={8} overflowX={'hidden'} >
       <Container maxW="container.xl" pt={2}>
         <Flex
           direction={{ base: "column", lg: "row" }}

@@ -1,6 +1,3 @@
-
-
-
 import { useState } from "react";
 import { Box, Button, Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import girl from '../../assets/avatar/girl.jpg';
@@ -15,7 +12,6 @@ const studentsData = [
     { id: 6, name: "Shubham Kalkar", company: "Figment Global Solutions Pvt. Ltd.", year: 2022, img: boy },
     { id: 7, name: "Shubham Kishor Manne", company: "Figment Global Solutions Pvt. Ltd.", year: 2024, img: boy },
     { id: 8, name: "Kshitij Dhopte", company: "Figment Global Solutions Pvt. Ltd.", year: 2023, img: boy },
-  
     { id: 9, name: "Aarav Mehta", company: "TCS", year: 2023, img: boy },
     { id: 10, name: "Ishita Sharma", company: "Infosys", year: 2022, img: girl },
     { id: 11, name: "Rohan Gupta", company: "Wipro", year: 2024, img: boy },
@@ -73,7 +69,7 @@ const PlacedStudents = () => {
   };
 
   return (
-    <Box bg='bg'>
+    <Box bg='bg' overflowX={'hidden'}>
         <Box py={10} px={{ base: 4, md: 8, lg: 24 }} textAlign="center">
       <Heading mb={6}>Our <Text as={'span'} color={'text'}>Placed Students</Text></Heading>
       <Flex justifyContent="center" wrap="wrap" gap={2} mb={6}>

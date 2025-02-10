@@ -37,7 +37,7 @@ const Contact = () => {
     { id: 12, title: "Data Analytics" },
   ];
   return (
-    <Box bg={"bg"}>
+    <Box bg={"bg"} overflowX={'hidden'}>
       <Container maxW="container.xl" px={{ base: 4, md: 8, lg: 20 }} py={10}>
         <Heading as="h2" textAlign="left" mb={1}>
           Course Enrollment or <Text as={'span'} color={'text'}>Inquiry</Text>

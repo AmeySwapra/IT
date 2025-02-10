@@ -36,7 +36,7 @@ const Footer = () => {
     { id: 12, title: "Data Analytics" },
   ];
   return (
-    <Box as="footer" bg="bg" color="text" py={10} >
+    <Box as="footer" overflowX={'hidden'} bg="bg" color="text" py={10} >
       <Container maxW="container.xl">
         <Grid
           templateColumns={{

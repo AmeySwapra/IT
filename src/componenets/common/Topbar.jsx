@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhoneAlt, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagr
 
 const Topbar = () => {
   return (
-    <Box bg="#1A202C" color="white" py={2} px={{ base: 4, md: 8, lg: 24 }}>
+    <Box overflowX={'hidden'} bg="#1A202C" color="white" py={2} px={{ base: 4, md: 8, lg: 24 }}>
       <Flex justify="space-between" align="center" flexWrap="wrap" direction={{ base: "column", md: "row" }} textAlign={{ base: "center", md: "left" }}>
         <Stack direction={{ base: "column", md: "row" }} spacing={{ base: 2, md: 6 }} align="center">
           <Text fontWeight="bold">Code Academy</Text>

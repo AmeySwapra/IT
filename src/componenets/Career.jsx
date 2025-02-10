@@ -20,7 +20,7 @@ const Career = () => {
   };
 
   return (
-    <Box bg="bg" color="white" py={10}>
+    <Box bg="bg" color="white" overflowX={'hidden'} py={10}>
       <Container maxW="container.lg" textAlign="center">
         <Heading as="h1" color={'text'} fontSize="4xl" mb={4}>
           Join Our Team

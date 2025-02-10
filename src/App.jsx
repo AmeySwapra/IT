@@ -6,6 +6,9 @@ import PlacementPage from './pages/PlacementPage'
 import AboutPage from './pages/AboutPage'
 import CareerPage from './pages/CareerPage'
 import GalleryPage from './pages/GalleryPage'
+import DetailCoursePage from './pages/DetailCoursePage'
+import CoursesPage from './pages/CoursesPage'
+import EnrollmentPage from './pages/EnrollmentPage'
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route path='/about' element={<AboutPage/>} />
           <Route path='/career' element={<CareerPage/>} />
           <Route path='/gallery' element={<GalleryPage/>} />
+          <Route path='/courses/:title' element={<DetailCoursePage/>} />
+          <Route path='/courses' element={<CoursesPage/>} />
+          <Route path='/enrollment' element={<EnrollmentPage/>} />
         </Routes>
       </BrowserRouter>
     </>

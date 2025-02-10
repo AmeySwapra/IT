@@ -19,6 +19,7 @@ import ava3 from "../assets/avatar/pic3.png";
 import ava4 from "../assets/avatar/pic4.png";
 import star from "../assets/bg/star.svg";
 import { useTheme } from "@emotion/react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const features = [
@@ -42,7 +43,7 @@ const HeroSection = () => {
   const theme = useTheme();
 
   return (
-    <Box bg="#F8F9FA" py={{ base: 6, md: 10 }}>
+    <Box overflowX={"hidden"} bg="#F8F9FA" py={{ base: 6, md: 10 }}>
       <Container maxW="6xl" px={{ base: 4, md: 6 }} position="relative">
         {/* Main Section */}
         <Flex
@@ -94,9 +95,17 @@ const HeroSection = () => {
               </Text>{" "}
               Registered Students.
             </Text>
-            <Button bg={theme.colors.text} size="lg" _hover={{ bg: "hover" }} color="white">
-              Explore All Courses
-            </Button>
+            <Link to={"/courses"}>
+              <Button
+                bg={theme.colors.text}
+                size="lg"
+                _hover={{ bg: "hover" }}
+                color="white"
+                rightIcon={<Image src="https://www.webgurukul.org/assets/img/Right1Arrow.svg" alt="Right arrow" w={5} />}
+              >
+                Explore All Courses
+              </Button>
+            </Link>
           </VStack>
 
           {/* Right Image Section */}
@@ -173,8 +182,8 @@ const HeroSection = () => {
               borderRadius="lg"
               _hover={{
                 boxShadow: `-10px -10px ${theme.colors.text}`,
-                transform: "translateY(-5px) scale(1.05)",  
-                transition: "all 0.5s ease-out", 
+                transform: "translateY(-5px) scale(1.05)",
+                transition: "all 0.5s ease-out",
               }}
               align="center"
               w={{ base: "100%", md: "48%", lg: "30%" }}

@@ -1,8 +1,12 @@
 import { Box, Flex, Heading, Text, Button, Image } from "@chakra-ui/react";
 import about from "../../assets/images/about.png";
+import { Link } from "react-router-dom";
+import { useTheme } from "@emotion/react";
 const AboutSection = () => {
+
+  const theme = useTheme();
   return (
-    <Box bg="bg" py={10} px={5}>
+    <Box bg="bg" py={10} px={5} overflowX={"hidden"}>
       <Flex
         direction={{ base: "column", md: "row" }}
         align="center"
@@ -13,7 +17,10 @@ const AboutSection = () => {
         {/* Left Side - Text Content */}
         <Box flex={1} textAlign={{ base: "center", md: "left" }} px={5}>
           <Heading fontSize="5xl" color="black" mb={4} fontFamily="heading">
-            About <Text as={'span'} color={'text'}>Code Academy</Text>
+            About{" "}
+            <Text as={"span"} color={"text"}>
+              Code Academy
+            </Text>
           </Heading>
           <Text fontSize="lg" color="secondary" fontFamily="body" mb={6}>
             At <b>Code Academy</b>, we are committed to providing top-notch IT
@@ -27,9 +34,17 @@ const AboutSection = () => {
             professional aiming to upskill, we offer hands-on training and
             industry-recognized certifications to ensure you succeed.
           </Text>
-          <Button bg="text" color="bg" _hover={{ bg: "hover" }} size="lg">
-            Explore Courses
-          </Button>
+          <Link to={"/courses"}>
+            <Button
+              bg={theme.colors.text}
+              size="lg"
+              _hover={{ bg: "hover" }}
+              color="white"
+              rightIcon={<Image src="https://www.webgurukul.org/assets/img/Right1Arrow.svg" alt="Right arrow" w={5} />}
+            >
+              Explore All Courses
+            </Button>
+          </Link>
         </Box>
 
         {/* Right Side - Image */}
@@ -38,8 +53,8 @@ const AboutSection = () => {
             src={about}
             alt="About Code Academy"
             maxW="100%"
-            bg="transparent" 
-            filter="brightness(1) contrast(1.2)" 
+            bg="transparent"
+            filter="brightness(1) contrast(1.2)"
             mixBlendMode="multiply"
           />
         </Box>
