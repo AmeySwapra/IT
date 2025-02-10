@@ -13,7 +13,7 @@ import {
     Textarea,
   } from "@chakra-ui/react";
   import { useState } from "react";
-  import modalbg from '../../assets/modal/job.avif'
+  import modalbg from '../../../public/assets/job.avif'
   const JobApplicationModal = ({ isOpen, onClose, job }) => {
     const [formData, setFormData] = useState({
       fullName: "",

@@ -5,7 +5,6 @@ import {
   Grid,
   Heading,
   Image,
-  Link,
   Stack,
   Text,
   VStack,
@@ -19,11 +18,12 @@ import {
   FaPinterest,
   FaLinkedin,
 } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
 import logo1 from "../../assets/logo/logo.png";
 const Footer = () => {
   const courses = [
     { id: 1, title: "Fullstack Python" },
-    { id: 2, title: "MERN/MEAN stack" },
+    { id: 2, title: "MERN Stack" },
     { id: 3, title: "Data Science" },
     { id: 4, title: "C Language" },
     { id: 5, title: "Data Structure Using CPP" },
@@ -63,29 +63,29 @@ const Footer = () => {
             </Text>
             <Heading size="sm">FOLLOW US:</Heading>
             <HStack spacing={3}>
-              <Link href="https://www.facebook.com/WebgurukulEdu/" isExternal>
+              <Link href="" isExternal>
                 <FaFacebook size="24px" />
               </Link>
-              <Link href="https://twitter.com/WebgurukulEdu" isExternal>
+              <Link href="" isExternal>
                 <FaTwitter size="24px" />
               </Link>
               <Link
-                href="https://www.instagram.com/webgurukul/?hl=en"
+                href=""
                 isExternal
               >
                 <FaInstagram size="24px" />
               </Link>
               <Link
-                href="https://www.youtube.com/channel/UCvyg0Qdh5e4YNrXAe9PuC5w"
+                href=""
                 isExternal
               >
                 <FaYoutube size="24px" />
               </Link>
-              <Link href="https://in.pinterest.com/webgurukul/" isExternal>
+              <Link href="" isExternal>
                 <FaPinterest size="24px" />
               </Link>
               <Link
-                href="https://www.linkedin.com/company/webgurukul/"
+                href=""
                 isExternal
               >
                 <FaLinkedin size="24px" />
@@ -95,26 +95,29 @@ const Footer = () => {
 
           {/* Quick Links */}
           <VStack align="start" spacing={3}>
-            <Heading size="md">QUICK LINKS</Heading>
-            {[
-              "Home",
-              "Gallery",
-              "About Us",
-              "Career",
-              "Hire Me",
-              "Contact Us",
-            ].map((link, index) => (
-              <Link key={index} href="#" _hover={{ color: "gray.400" }}>
-                {link}
-              </Link>
-            ))}
-          </VStack>
+  <Heading size="md">QUICK LINKS</Heading>
+  {[
+    { name: "Home", path: "/" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "About Us", path: "/about" },
+    { name: "Career", path: "/career" },
+    { name: "Placements", path: "/placement" },
+    { name: "Contact Us", path: "/contact" },
+  ].map((link, index) => (
+    <Link as={NavLink} key={index} to={link.path} _hover={{ color: "gray.400" }}>
+      {link.name}
+    </Link>
+  ))}
+</VStack>
+
 
           {/* Foundational Courses */}
           <VStack align="start" spacing={3}>
             <Heading size="md">FOUNDATIONAL COURSES</Heading>
             {courses.map((course) => (
-              <Text key={course.id}>{course.title}</Text>
+              <Link to={`/courses/${course.title}`}>
+                 <Text key={course.id}>{course.title}</Text>
+              </Link>
             ))}
           </VStack>
 
