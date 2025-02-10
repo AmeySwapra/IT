@@ -741,10 +741,15 @@ const CourseGrid = () => {
 
   return (
     <Box py={10} px={{ base: 4, md: 8, lg: 24 }} bg="bg">
-      <Heading mb={6} fontSize={'4xl'} textAlign={'center'}>Our <Text as={'span'} color={'text'}> Popular Courses</Text></Heading>
+      <Heading mb={6} fontSize={"4xl"} textAlign={"center"}>
+        Our{" "}
+        <Text as={"span"} color={"text"}>
+          {" "}
+          Popular Courses
+        </Text>
+      </Heading>
       <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={6}>
         {courses.map((course) => {
-         
           const imageUrl =
             course.image?.[0] ||
             course.image?.[2] ||
@@ -765,9 +770,13 @@ const CourseGrid = () => {
                 fallbackSrc="https://via.placeholder.com/300"
                 alt={course.title}
                 borderRadius="md"
+                width="100%"
+                height="150px"
+                display="block"
+                mx="auto"
                 mb={3}
                 onError={(e) => {
-                  e.target.src = "https://via.placeholder.com/300"; 
+                  e.target.src = "https://via.placeholder.com/300";
                 }}
               />
               <Text fontSize="xl" fontWeight="bold">
@@ -778,9 +787,15 @@ const CourseGrid = () => {
               </Text>
               <Button
                 color="white"
-                bg={'text'}
+                bg={"text"}
                 onClick={() => navigate(`/courses/${course.title}`)}
-                rightIcon={<Image src="https://www.webgurukul.org/assets/img/Right1Arrow.svg" alt="Right arrow" w={5} />}
+                rightIcon={
+                  <Image
+                    src="https://www.webgurukul.org/assets/img/Right1Arrow.svg"
+                    alt="Right arrow"
+                    w={5}
+                  />
+                }
               >
                 View Details
               </Button>
