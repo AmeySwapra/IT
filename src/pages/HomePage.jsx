@@ -9,12 +9,14 @@ import HiringPartners from '../componenets/common/HiringPartners'
 import CourseGrid from '../componenets/CourseGrid'
 import Testimonial from '../componenets/common/Testimonail'
 import FAQ from '../componenets/common/FAQ'
+import Carousel from '../componenets/Carousel'
 
 function HomePage() {
   return (
    <>
      <Topbar/>
      <Header/>
+     <Carousel/>
      <HeroSection/>
      <About/>
      <CourseGrid/>

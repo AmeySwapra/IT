@@ -13,18 +13,67 @@ import {
   Stack,
   Textarea,
   VStack,
+  useToast
 } from "@chakra-ui/react";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const EnrollmentForm = () => {
   const [formData, setFormData] = useState({
-    full_name: "",
-    email: "",
-    phone: "",
-    courses: [],
-    referral: [],
-    message: "",
-  });
+     user_name: "",
+     user_phonenumber: "",
+     user_email: "",
+     user_course: "",
+     message: "",
+   });
+   const toast = useToast();
+
+   const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formData,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          toast({
+            title: "Success!",
+            description: "Your message has been sent successfully.",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+            position: "top-right",
+          });
+          setFormData({
+            user_name: "",
+            user_phonenumber: "",
+            user_email: "",
+            user_course: "",
+            message: "",
+          });
+        },
+        (error) => {
+          toast({
+            title: "Error!",
+            description: "Something went wrong. Please try again.",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+            position: "top-right",
+          });
+          console.error("EmailJS Error:", error);
+        }
+      );
+  };
 
   const courses = [
     { id: 1, title: "Fullstack Python" },
@@ -40,20 +89,11 @@ const EnrollmentForm = () => {
     { id: 11, title: "Cloud & DevOPS (AWS)" },
     { id: 12, title: "Data Analytics" },
   ];
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
+ 
   const handleCheckboxChange = (name, values) => {
-    setFormData({ ...formData, [name]: values });
+    console.log(name)
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-  };
+ 
 
   return (
     <Box bg="bg">
@@ -67,8 +107,8 @@ const EnrollmentForm = () => {
               <FormControl isRequired>
                 <FormLabel>Full Name</FormLabel>
                 <Input
-                  name="full_name"
-                  value={formData.full_name}
+                  name="user_name"
+                  value={formData.user_name}
                   onChange={handleChange}
                 />
               </FormControl>
@@ -76,26 +116,30 @@ const EnrollmentForm = () => {
               <FormControl isRequired>
                 <FormLabel>Email</FormLabel>
                 <Input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
+                    type="email"
+                    name="user_email"
+                    placeholder="Email"
+                    value={formData.user_email}
+                    onChange={handleChange}
+                  />
               </FormControl>
 
               <FormControl isRequired>
                 <FormLabel>Phone</FormLabel>
                 <Input
                   type="number"
-                  name="phone"
-                  value={formData.phone}
+                  name="user_phonenumber"
+                  value={formData.user_phonenumber}
                   onChange={handleChange}
                 />
               </FormControl>
 
               <FormControl>
                 <FormLabel>Select a Course</FormLabel>
-                <Select placeholder="Select course">
+                <Select name="user_course"
+                    placeholder="Select a course"
+                    value={formData.user_course}
+                    onChange={handleChange}>
                   {courses.map((course) => (
                     <option key={course.id} value={course.title}>
                       {course.title}
@@ -127,6 +171,7 @@ const EnrollmentForm = () => {
                 <FormLabel>Message (Optional)</FormLabel>
                 <Textarea
                   name="message"
+                  placeholder="Message *"
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}

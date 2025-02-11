@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -16,11 +17,67 @@ import {
   Card,
   CardBody,
   Flex,
+  useToast,
 } from "@chakra-ui/react";
 import { FaPhoneAlt, FaEnvelope, FaHome } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import { useTheme } from "@emotion/react";
 const Contact = () => {
-  const theme = useTheme();
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_phonenumber: "",
+    user_email: "",
+    user_course: "",
+    message: "",
+  });
+  const toast = useToast();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formData,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          toast({
+            title: "Success!",
+            description: "Your message has been sent successfully.",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+            position: "top-right",
+          });
+          setFormData({
+            user_name: "",
+            user_phonenumber: "",
+            user_email: "",
+            user_course: "",
+            message: "",
+          });
+        },
+        (error) => {
+          toast({
+            title: "Error!",
+            description: "Something went wrong. Please try again.",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+            position: "top-right",
+          });
+          console.error("EmailJS Error:", error);
+        }
+      );
+  };
 
   const courses = [
     { id: 1, title: "Fullstack Python" },
@@ -36,11 +93,17 @@ const Contact = () => {
     { id: 11, title: "Cloud & DevOPS (AWS)" },
     { id: 12, title: "Data Analytics" },
   ];
+
+  const theme = useTheme();
+
   return (
-    <Box bg={"bg"} overflowX={'hidden'}>
+    <Box bg={"bg"} overflowX={"hidden"}>
       <Container maxW="container.xl" px={{ base: 4, md: 8, lg: 20 }} py={10}>
         <Heading as="h2" textAlign="left" mb={1}>
-          Course Enrollment or <Text as={'span'} color={'text'}>Inquiry</Text>
+          Course Enrollment or{" "}
+          <Text as={"span"} color={"text"}>
+            Inquiry
+          </Text>
         </Heading>
         <Text textAlign="left" mb={6}>
           Your details will not be shared. Compulsory fields are marked.
@@ -50,39 +113,55 @@ const Contact = () => {
             bg="white"
             p={6}
             borderRadius="lg"
-            border={`1px solid ${theme.colors.text}`}
             _hover={{
               boxShadow: `10px 10px ${theme.colors.text}`,
-              transform: "translateY(-5px) scale(1.05)",  
-              transition: "all 0.5s ease-out", 
+              transform: "translateY(-5px) scale(1.05)",
+              transition: "all 2s ease-out",
             }}
           >
             <CardBody>
-              <VStack spacing={4} as="form">
+              <VStack spacing={4} as="form" onSubmit={handleSubmit}>
                 <FormControl isRequired>
                   <FormLabel>Name</FormLabel>
-                  <Input type="text" placeholder="Name *" />
+                  <Input
+                    type="text"
+                    name="user_name"
+                    placeholder="Name *"
+                    value={formData.user_name}
+                    onChange={handleChange}
+                  />
                 </FormControl>
                 <FormControl isRequired>
                   <FormLabel>Mobile No.</FormLabel>
-                  <Input type="tel" placeholder="Phone Number" maxLength={10} />
+                  <Input
+                    type="tel"
+                    name="user_phonenumber"
+                    placeholder="Phone Number"
+                    maxLength={10}
+                    value={formData.user_phonenumber}
+                    onChange={handleChange}
+                  />
                 </FormControl>
                 <FormControl>
                   <FormLabel>Email</FormLabel>
-                  <Input type="email" placeholder="Email" />
+                  <Input
+                    type="email"
+                    name="user_email"
+                    placeholder="Email"
+                    value={formData.user_email}
+                    onChange={handleChange}
+                  />
                 </FormControl>
                 <FormControl isRequired>
                   <FormLabel>Select Course</FormLabel>
-                  <Select placeholder="Select a course">
+                  <Select
+                    name="user_course"
+                    placeholder="Select a course"
+                    value={formData.user_course}
+                    onChange={handleChange}
+                  >
                     {courses.map((course) => (
-                      <option
-                        key={course.id}
-                        value={course.title}
-                        _hover={{
-                          bg: theme.colors.hover,
-                          color: theme.colors.white,
-                        }}
-                      >
+                      <option key={course.id} value={course.title}>
                         {course.title}
                       </option>
                     ))}
@@ -91,13 +170,39 @@ const Contact = () => {
 
                 <FormControl>
                   <FormLabel>Message</FormLabel>
-                  <Textarea placeholder="Message *" rows={5} />
+                  <Textarea
+                    name="message"
+                    placeholder="Message *"
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
                 </FormControl>
+
                 <VStack spacing={3} width="full">
-                  <Button bg={"text"} color={"white"} width="half">
+                  <Button
+                    type="submit"
+                    bg={"text"}
+                    color={"white"}
+                    width="full"
+                  >
                     Submit
                   </Button>
-                  <Button color={"black"} bg={"white"} width="half">
+                  <Button
+                    type="reset"
+                    color={"black"}
+                    bg={"white"}
+                    width="full"
+                    onClick={() =>
+                      setFormData({
+                        user_name: "",
+                        user_phonenumber: "",
+                        user_email: "",
+                        user_course: "",
+                        message: "",
+                      })
+                    }
+                  >
                     Reset
                   </Button>
                 </VStack>
@@ -149,39 +254,10 @@ const Contact = () => {
                     </Link>
                   </VStack>
                 </Flex>
-                <Flex alignItems="center">
-                  <Box
-                    bg="#00a650"
-                    p={2}
-                    borderRadius="full"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <Icon as={FaHome} color="white" w={6} h={6} />
-                  </Box>
-                  <VStack align="start" spacing={0} ml={3}>
-                    <Text fontWeight="bold">Visit us at:</Text>
-                    <Text>
-                      Neeta Tower 1st Floor Above Amantran Hotel, Mumbai Pune
-                      Highway, Phugewadi, Pune - Maharashtra 411012
-                    </Text>
-                  </VStack>
-                </Flex>
               </VStack>
             </CardBody>
           </Card>
         </SimpleGrid>
-        <Box mt={10} borderRadius="lg" boxShadow={'lg'} overflow="hidden">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15126.347805001367!2d73.8309722!3d18.5926515!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b957207908e3%3A0x87104ad1956e1901!2sSwaPra%20Technologies!5e0!3m2!1sen!2sin!4v1731580339592!5m2!1sen!2sin"
-            width="100%"
-            height="400"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
-        </Box>
       </Container>
     </Box>
   );

@@ -11,15 +11,18 @@ import {
     FormLabel,
     Input,
     Textarea,
+    useToast,
   } from "@chakra-ui/react";
   import { useState } from "react";
+  import emailjs from "@emailjs/browser";
 
   const JobApplicationModal = ({ isOpen, onClose, job }) => {
+    const toast = useToast();
     const [formData, setFormData] = useState({
       fullName: "",
       email: "",
       contact: "",
-      resume: null,
+      resume: null, 
       portfolio: "",
       coverLetter: "",
       expectedSalary: "",
@@ -27,16 +30,73 @@ import {
     });
   
     const handleChange = (e) => {
-      const { name, value, type, files } = e.target;
-      setFormData({
-        ...formData,
-        [name]: type === "file" ? files[0] : value,
-      });
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    };
+
+    const handleFileChange = (e) => {
+      const file = e.target.files[0];
+  
+      if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          setFormData({ ...formData, resume: reader.result });
+        };
+      }
     };
   
-    const handleSubmit = () => {
-      console.log("Submitted Data:", formData);
-      onClose();
+    const handleSubmit = (e) => {
+      e.preventDefault();
+  
+      if (!formData.resume) {
+        toast({
+          title: "Error",
+          description: "Please upload your resume.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+        return;
+      }
+  
+      emailjs
+        .send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_JOB_TEMPLATE_ID,
+          {
+            fullName: formData.fullName,
+            email: formData.email,
+            contact: formData.contact,
+            resume: formData.resume, 
+            portfolio: formData.portfolio,
+            coverLetter: formData.coverLetter,
+            expectedSalary: formData.expectedSalary,
+            noticePeriod: formData.noticePeriod,
+          },
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY 
+        )
+        .then(() => {
+          toast({
+            title: "Application Submitted",
+            description: "Your job application has been sent successfully.",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+            position: 'top-right'
+          });
+          onClose();
+        })
+        .catch((error) => {
+          console.error("Error sending email:", error);
+          toast({
+            title: "Error",
+            description: "There was an error submitting your application.",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        });
     };
   
     return (
@@ -71,10 +131,7 @@ import {
               <Input type="file" name="resume" onChange={handleChange} />
             </FormControl>
   
-            <FormControl mb={3}>
-              <FormLabel>Portfolio (Optional)</FormLabel>
-              <Input name="portfolio" value={formData.portfolio} onChange={handleChange} />
-            </FormControl>
+            
   
             <FormControl mb={3}>
               <FormLabel>Cover Letter</FormLabel>
